@@ -1,0 +1,332 @@
+body {
+  background-color: #dab071;
+  background-color: #bb8b42;
+  background-color: #533527;
+  background-color: #963630;
+  background-color: #dfd8c4; 
+  font-family : Impact, fantasy;
+  font-size: 125%;
+}
+
+body.theme1 {
+  background-color: #222725; 
+}
+
+body.theme2 {
+  background-color: #7eccbf; 
+}
+
+body.theme3 {
+  background-color: #ac9cb4; 
+  background: url(pic2.jpg); 
+}
+
+body.theme4 {
+  background-color: #dbd814;
+  background: url(pic.jpg); 
+  font-family:  Times, Times New Roman, serif;
+}
+
+  .menuL {
+    display: inline-block;
+    
+    position: absolute;
+  }
+
+  body.theme1 .menuL {
+    color: #fff;
+  }
+
+  body.theme2 .menuL {
+    color: #39a3a7;
+    font-family: FreeMono, monospace;
+  }
+
+  .menuL.right {
+    display: flex;
+    right: 5px;
+    flex-direction: column;
+  }
+  
+  .field {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    /*color: #fff;*/
+    font-size: 1.3em;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .box {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 40%;
+    flex-direction: row;
+    
+    -webkit-border-radius: 10px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-bottomright: 7px;
+    border-radius: 10px;
+    border-bottom-right-radius: 7px;
+  }
+
+  body.theme2 .box {
+    background-color: #c4f5f2;
+    border: 2px solid #c4f5f2;
+    color: #021e1f;
+    font-family: FreeMono, monospace;
+  }
+
+  body.theme4 .box {
+    background-color: #ffffff8c;
+    border: 2px #ffffff8c;
+    color: #021e1f;
+    font-family: Times, Times New Roman, serif;
+  }
+
+  .buttons {
+    display: flex;
+    padding: 10px;
+    width: 25%;
+    margin-left: 0%;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0px 10px;
+    padding: 5px 10px;
+  }
+
+  .themesBox {
+    /*position: absolute;*/
+    /*display: inline-block;
+    /*padding: 5px;
+    right: 0;
+    color: #fff;
+    font-size: 1.3em;*/
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .box:last-child {
+    margin-bottom: 0;
+  }
+  
+  button.btn {
+    margin-right: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 0.65em;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    /*width: 80%;*/
+
+    font-family : Impact, fantasy;
+    font-size: 100%;
+
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+  }
+  
+  .btn.save {
+    background-color: #bb8b42;
+    border: 2px solid #bb8b42;
+    color: #fff;
+  }
+
+  body.theme1 .btn.save {
+    background-color: #cc9e3a;
+    border: 2px solid #cc9e3a;
+  }
+
+  body.theme2 .btn.save {
+    background-color: #e8a87c;
+    border: 2px solid #e8a87c;
+    font-family: FreeMono, monospace;
+  }
+
+  body.theme4 .btn.save {
+    background-color: #0c6b5e73;
+    border: 2px  #0c6b5e73;
+    font-family: Times, Times New Roman, serif;
+  }
+
+
+
+  .btn.save:hover {
+    background-color: #533527;
+    border-color: #533527;
+  }
+  
+
+  body.theme1 .btn.save:hover {
+    color: #fff;
+    background-color: #725b2b;
+    border: 2px solid #725b2b;
+  }
+
+  body.theme2 .btn.save:hover {
+    background-color: #e8b07c;
+    border: 2px solid #e8b07c;
+    color: #eb866b;
+  }
+
+  body.theme4 .btn.save:hover {
+    background-color: #0c6b5e9d;
+    border: 2px  #0c6b5e9d;
+    font-family: Times, Times New Roman, serif;
+  }
+
+  .btn.remove {
+    background-color: #dab071;
+    border: 2px solid #dab071;
+    color: #533527;
+  }
+
+  body.theme1 .btn.remove {
+    background-color: #f0b966;
+    border: 2px solid #f0b966;
+  }
+
+  body.theme2 .btn.remove {
+    background-color: #e8b07c;
+    border: 2px solid #e8b07c;
+    font-family: FreeMono, monospace;
+  }
+
+  body.theme4 .btn.remove {
+    background-color: #f1d75e7c;
+    border: 2px #f1d75e7c;
+    font-family: Times, Times New Roman, serif;
+  }
+
+  .btn.remove:hover {
+    background-color: #533527;
+    border-color: #533527;
+    color: #fff;
+  }
+
+  body.theme4 .btn.remove:hover {
+    background-color: #f1d65ea9;
+    border: 2px #f1d65ea9;
+    font-family: Times, Times New Roman, serif;
+    color: #533527;
+  }
+
+  .btn.add {
+    background-color: #963630;
+    border:2px solid #963630;
+    top: 5%;
+    padding: 10px;
+    margin-left: 0%;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    color: #fff;
+  }
+
+  body.theme1 .btn.add {
+    background-color: #c5260a;
+    border: 2px solid #c5260a;
+  }
+
+  body.theme2 .btn.add {
+    background-color: #eb866b;
+    border: 2px solid #eb866b;
+    font-family: FreeMono, monospace;
+  }
+
+  body.theme4 .btn.add {
+    background-color: #002c0b70;
+    border: 2px  #002c0b70;
+    font-family:  Times, Times New Roman, serif;
+  }
+
+
+  .btn.add:hover {
+    background-color: #533527;
+    border-color: #533527;
+  }
+
+  body.theme1 .btn.add:hover {
+    background-color: #61180b;
+    border: 2px solid #61180b;
+  }
+
+  body.theme2 .btn.add:hover {
+    background-color: #c38d9e;
+    border: 2px solid #c38d9e;
+  }
+
+  body.theme4 .btn.add:hover {
+    background-color: #002c0b9c;
+    border: 2px  #002c0b9c;
+    font-family:  Times, Times New Roman, serif;
+  }
+
+  .btn.language {
+    background-color: #963630;
+    border: 2px solid #963630;
+    display: inline-block;
+    flex-direction: row;
+    color: #fff;
+  }
+
+  body.theme1 .btn.language {
+    background-color: #c52f0a;
+    border: 2px solid #c5260a;
+  }
+
+  body.theme2 .btn.language {
+    background-color: #eb866b;
+    border: 2px solid #eb866b;
+    font-family: FreeMono, monospace;
+  }
+
+  body.theme4 .btn.language {
+    background-color: #002c0b70;
+    border: 2px  #002c0b70;
+    font-family:  Times, Times New Roman, serif;
+  }
+
+  .btn.language:hover {
+    background-color: #533527;
+    border: 2px solid #533527;
+  }
+
+  body.theme1 .btn.language:hover {
+    background-color: #61180b;
+    border: 2px solid #61180b;
+  }
+
+  body.theme2 .btn.language:hover {
+    background-color: #c38d9e;
+    border: 2px solid #c38d9e;
+  }
+
+  body.theme4 .btn.language:hover {
+    background-color: #002c0b9c;
+    border: 2px  #002c0b9c;
+    font-family:  Times, Times New Roman, serif;
+  }
+
+  .btn.theme {
+    background-color: #963630;
+    border: 2px solid #963630;
+    color: #fff;
+  }
+
+  
+  .btn.theme:hover {
+    background-color: #533527;
+    border-color: #533527;
+  }

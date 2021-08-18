@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Список всякого</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="babel.js"></script>
+</head>
+
+<body id="mainBody" class="mainBody">
+    <div id="program"></div>
+    <script type="text/babel">
+        class Blocks extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { editing: false };
+                this.edit = this.edit.bind(this);
+                this.remove = this.remove.bind(this);
+                this.save = this.save.bind(this);
+            };
+            edit = () => {
+                this.setState({ editing: true });
+            };
+            remove = () => {
+                this.props.deleteT(this.props.index);
+            };
+            save = () => {
+                var Value = this.refs.newTxt.value;
+                this.setState({ editing: false });
+                this.props.updateT(this.refs.newTxt.value, this.props.index);
+            };
+            vievMain = () => {
+                return (
+                    <div className="box">
+                        <div className="text">{this.props.children}</div>
+                        <div className="buttons">
+                            <button onClick={this.edit} className="btn save">{this.props.editTxt}</button>
+                            <button onClick={this.remove} className="btn remove">{this.props.removeTxt}</button>
+                        </div>
+                    </div>
+                );
+            };
+            vievEdit = () => {
+                return (
+                    <div className="box">
+                        <textarea ref="newTxt" defaultValue={this.props.children}></textarea>
+                        <div className="buttons">
+                            <button onClick={this.save} className="btn save">{this.props.saveTxt}</button>
+                        </div>
+                    </div>
+                );
+            };
+            render() {
+                if (this.state.editing) {
+                    return this.vievEdit();
+                } else {
+                    return this.vievMain();
+                }
+            }
+        }
+
+        class Field extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    tasks: ['Новое задание', 'New task', 'Neu Aufgabe']
+                };
+            };
+            add = (text) => {
+                var arr = this.state.tasks;
+                arr.push(text);
+                this.setState({ tasks: arr });
+            };
+            deleteBlock = (i) => {
+                var arr = this.state.tasks;
+                arr.splice(i, 1);
+                this.setState({ tasks: arr });
+            };
+            updateText = (text, i) => {
+                var arr = this.state.tasks;
+                arr[i] = text;
+                this.setState({ tasks: arr });
+            };
+            eachBlock = (item, i) => {
+                return (
+                    <Blocks key={i} index={i} updateT={this.updateText} deleteT={this.deleteBlock} removeTxt={this.props.removeTxt} saveTxt={this.props.saveTxt} editTxt={this.props.editTxt}>{item}</Blocks>
+                );
+            };
+
+            render() {
+                return (
+                    <div className="field">
+                        <button onClick={this.add.bind(null, this.props.newTask)} className="btn add">{this.props.addTxt}</button>
+                        {this.state.tasks.map(this.eachBlock)}
+                    </div>
+                )
+            }
+        }
+
+        class Language extends React.Component {
+            constructor(props) {
+                super(props);
+                /* Русский 0, English 1, Deutsch 2*/
+                this.state = { languageSelected: 0 };
+            };
+            languageLanguageSelection = ['Язык', 'Language', 'Sprache'];
+            languageThemeSelection = ['Выбор темы', 'Theme select', 'Themenauswahl'];
+            languageAddSelection = ['Добавить', 'Add', 'Hinzüfugen'];
+            languageEditSelection = ['Редактировать', 'Edit', 'Bearbeiten'];
+            languageRemoveSelection = ['Удалить', 'Remove', 'Löschen'];
+            languageSaveSelection = ['Сохранить', 'Save', 'Speichern'];
+            languageNewTaskSelection = ['Новое задание', 'New task', 'Neu Aufgabe'];
+
+            btnRusChoise = () => {
+                this.setState({ languageSelected: 0 });
+            };
+            btnEngChoise = () => {
+                this.setState({ languageSelected: 1 });
+            };
+            btnDeuChoise = () => {
+                this.setState({ languageSelected: 2 });
+            };
+
+            btnRusView = () => {
+                if (this.state.languageSelected == 0) {
+                    return (<button onClick={this.btnRusChoise} className="btn language">Рус</button>);
+                } else {
+                    return (<button onClick={this.btnRusChoise} className="btn language">Рус</button>);
+                }
+            };
+            btnEngView = () => {
+                if (this.state.languageSelected == 1) {
+                    return (<button onClick={this.btnEngChoise} className="btn language">Eng</button>);
+                } else {
+                    return (<button onClick={this.btnEngChoise} className="btn language">Eng</button>);
+                }
+            };
+            btnDeuView = () => {
+                if (this.state.languageSelected == 2) {
+                    return (<button onClick={this.btnDeuChoise} className="btn language">Deu</button>);
+                } else {
+                    return (<button onClick={this.btnDeuChoise} className="btn language">Deu</button>);
+                }
+            };
+
+            languageMenu = () => {
+                return (
+                    <div>
+                        <div>{this.languageLanguageSelection[this.state.languageSelected]}</div>
+                        {this.btnRusView()}
+                        {this.btnEngView()}
+                        {this.btnDeuView()}
+                    </div>
+                );
+            };
+            render() {
+                return (
+                    <div>
+                        <div className="menuL">
+                            {this.languageMenu()}
+                        </div>
+                        <div className="menuL right">
+                            <Themes themeTxt={this.languageThemeSelection[this.state.languageSelected]} />
+                        </div>
+
+                        <div>
+                            <Field addTxt={this.languageAddSelection[this.state.languageSelected]} newTask={this.languageNewTaskSelection[this.state.languageSelected]} editTxt={this.languageEditSelection[this.state.languageSelected]} removeTxt={this.languageRemoveSelection[this.state.languageSelected]} saveTxt={this.languageSaveSelection[this.state.languageSelected]} />
+                        </div>
+                    </div>
+                );
+            };
+        }
+
+        class Themes extends React.Component {
+            select0 = () => {
+                document.body.className = "mainBody";
+            };
+            select1 = () => {
+                document.body.className = "theme1";
+            };
+            select2 = () => {
+                document.body.className = "theme2";
+            };
+            select3 = () => {
+                document.body.className = "theme3";
+            };
+            select4 = () => {
+                document.body.className = "theme4";
+            };
+            render() {
+                return (
+                    <div className="menuL right">
+                        <div>{this.props.themeTxt}</div>
+                        <button onClick={this.select0} className="btn language">0</button>
+                        <button onClick={this.select1} className="btn language">1</button>
+                        <button onClick={this.select2} className="btn language">2</button>
+                        <button onClick={this.select4} className="btn language">3</button>
+                    </div>
+                );
+            };
+        }
+
+        const app = document.getElementById("program");
+
+        ReactDOM.render(
+            <div>
+
+                <Language />
+            </div>, app
+        );
+
+    </script>
+</body>
+
+</html>
